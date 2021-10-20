@@ -51,6 +51,22 @@ void setup()
 //**********************************************************************************************************************
 // LOOP
 //**********************************************************************************************************************
+void loop()
+{
+  analogReadResolution(8);//Funcion que hace que los valores de ADC entren como un byte
+  // Llamado de funciones
+  voltaje1();
+
+  if (Serial2.available() > 0) // Condición que permite verficar si hay bytes disponibles en el buffer de registro
+  {
+    voltajeB = Serial2.readStringUntil('\n'); //Leer el valor enviado por la tiva c cuando detecta un enter 
+    contador = Serial2.readStringUntil('\n');
+   
+  }
+  voltaje2();
+  UPC();
+  delay(250);
+}
 //**********************************************************************************************************************
 // Fuinciones
 //**********************************************************************************************************************
