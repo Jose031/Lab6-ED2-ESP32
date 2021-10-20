@@ -78,3 +78,45 @@ void voltaje1(void) // Voltaje potenciometro 1
   Serial2.println(analogRead(pot1));
 }
 
+void voltaje2(void) // Voltaje potenciometro 2
+{
+  // Conversión de señal ADC a miliVoltios
+
+     // Operación para obtener unidades y decimales del voltaje del Potenciometro 2
+    int vol1 = voltajeB.toInt();
+    decenas1 = vol1 / 100.0;
+    vol1 = vol1 - decenas1 * 100.0;
+    unidades1 = vol1 / 10.0;
+    vol1 = vol1 - unidades1 * 10.0;
+    decimal1 = vol1;
+  
+    // Impresión del voltaje del potenciometro 2 en la LCD con su respectiva posición
+    LCD.setCursor(0, 6);
+    LCD.print("Ver:");
+    LCD.setCursor(1, 6);
+    LCD.print(decenas1);
+    LCD.print(unidades1);
+    LCD.print(decimal1);
+    Serial.println(voltajeB); //forma de enviar la sel valor ADC a la tiva, esto mediante texto
+    
+}
+void UPC(void) // Valor contador
+{
+      // Operación para obtener centenas, decenas y unidades del valor del contador
+    int cont = contador.toInt();
+    centenas = cont / 100.0;
+    cont = cont - centenas * 100.0;
+    decenas2 = cont / 10.0;
+    cont = cont - decenas2 * 10.0;
+    unidades2 = cont;
+
+   // Impresión del valor del contador en la pantalla LCD
+    LCD.setCursor(0, 11);
+    LCD.print("Azul:");
+    LCD.setCursor(1, 11);
+    LCD.print(centenas);
+    LCD.print(decenas2);
+    LCD.print(unidades2);
+    Serial.println(contador);
+  
+}
